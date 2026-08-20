@@ -220,7 +220,7 @@ $lineRedirectUri = getLineRedirectUri();
                             <label class="block text-[11px] font-semibold text-orange-700 mb-1">
                                 โดเมนปัจจุบันของระบบคุณ (ถ้าใช้ localhost กรุณาระบุ Port ด้วย เช่น http://localhost:8888)
                             </label>
-                            <input type="text" name="oauth_base_url" value="<?= htmlspecialchars(getSystemSetting('oauth_base_url', 'http://localhost:8888')) ?>" required class="w-full px-3 py-2 text-xs bg-white border border-orange-300 rounded-xl focus:ring-2 focus:ring-orange-500 font-mono text-slate-800">
+                            <input type="text" name="oauth_base_url" value="<?= htmlspecialchars(getOauthBaseUrl()) ?>" required class="w-full px-3 py-2 text-xs bg-white border border-orange-300 rounded-xl focus:ring-2 focus:ring-orange-500 font-mono text-slate-800">
                         </div>
                     </div>
 

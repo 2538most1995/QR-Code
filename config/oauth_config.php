@@ -4,7 +4,19 @@ require_once __DIR__ . '/database.php';
 
 // ⭐ ค่า Redirect URI คงที่ — ต้องตรง 100% กับที่ใส่ไว้ใน Google Cloud Console และ LINE Developers Console
 function getOauthBaseUrl() {
-    return getSystemSetting('oauth_base_url', 'http://localhost:8888');
+    // 1. ลองดึงจากฐานข้อมูลก่อน
+    $db_setting = getSystemSetting('oauth_base_url', '');
+    
+    // 2. ถ้าตั้งค่าไว้ และไม่ใช่ค่าเริ่มต้นของ MAMP ให้ใช้ค่านั้น
+    if (!empty($db_setting) && $db_setting !== 'http://localhost:8888') {
+        return rtrim($db_setting, '/');
+    }
+
+    // 3. ถ้าไม่มีการตั้งค่า ให้ Auto-detect โดเมนปัจจุบันอัตโนมัติ (แก้ปัญหา Server จริง)
+    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+    $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+    
+    return $protocol . $host;
 }
 
 function getGoogleRedirectUri() {
