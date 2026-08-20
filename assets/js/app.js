@@ -464,7 +464,12 @@ function submitCreateForm() {
             } else {
                 // เคลียร์ฟอร์มเมื่อบันทึกใหม่สำเร็จ
                 const form = document.getElementById('qrForm');
-                if (form) form.reset();
+                if (form) {
+                    form.reset();
+                    // บังคับล้างค่าอีกรอบกันเบราว์เซอร์จำ
+                    document.getElementById('title').value = '';
+                    document.getElementById('target_url').value = '';
+                }
                 
                 // คืนค่า Preview Card กลับเป็นค่าเริ่มต้น
                 const pvTitle = document.getElementById('preview_title');

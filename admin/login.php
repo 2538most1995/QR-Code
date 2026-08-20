@@ -111,6 +111,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php endif; ?>
 
             <form method="POST" class="space-y-4">
+                <!-- Fake fields to trick browser autocomplete -->
+                <input style="display:none" type="text" name="fakeusernameremembered"/>
+                <input style="display:none" type="password" name="fakepasswordremembered"/>
+
                 <div>
                     <label class="block text-xs font-semibold text-slate-700 mb-1.5">ชื่อผู้ใช้งาน หรือ อีเมล</label>
                     <div class="relative">
