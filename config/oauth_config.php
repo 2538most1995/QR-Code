@@ -3,15 +3,16 @@
 require_once __DIR__ . '/database.php';
 
 // ⭐ ค่า Redirect URI คงที่ — ต้องตรง 100% กับที่ใส่ไว้ใน Google Cloud Console และ LINE Developers Console
-// MAMP Document Root ตั้งค่าอยู่ที่โฟลเดอร์ QR_code โดยตรง จึงไม่ต้องมี /QR_code/ ใน URL
-define('OAUTH_BASE_URL', 'http://localhost:8888');
+function getOauthBaseUrl() {
+    return getSystemSetting('oauth_base_url', 'http://localhost:8888');
+}
 
 function getGoogleRedirectUri() {
-    return OAUTH_BASE_URL . '/admin/oauth_callback.php?provider=google';
+    return getOauthBaseUrl() . '/admin/oauth_callback.php?provider=google';
 }
 
 function getLineRedirectUri() {
-    return OAUTH_BASE_URL . '/admin/oauth_callback.php?provider=line';
+    return getOauthBaseUrl() . '/admin/oauth_callback.php?provider=line';
 }
 
 function getGoogleOAuthSettings() {

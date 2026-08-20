@@ -53,11 +53,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!$error) $message = 'บันทึกการตั้งค่าชื่อหน่วยงานและตราสัญลักษณ์เรียบร้อยแล้ว';
 
     } elseif ($action === 'oauth') {
+        $oauthBaseUrl = rtrim(trim($_POST['oauth_base_url'] ?? 'http://localhost:8888'), '/');
         $googleClientId = trim($_POST['google_client_id'] ?? '');
         $googleClientSecret = trim($_POST['google_client_secret'] ?? '');
         $lineChannelId = trim($_POST['line_channel_id'] ?? '');
         $lineChannelSecret = trim($_POST['line_channel_secret'] ?? '');
 
+        setSystemSetting('oauth_base_url', $oauthBaseUrl);
         setSystemSetting('google_client_id', $googleClientId);
         setSystemSetting('google_client_secret', $googleClientSecret);
         setSystemSetting('line_channel_id', $lineChannelId);
@@ -208,6 +210,19 @@ $lineRedirectUri = getLineRedirectUri();
 
                 <form method="POST" class="space-y-6">
                     <input type="hidden" name="setting_type" value="oauth">
+
+                    <!-- Base URL Config Box -->
+                    <div class="p-5 bg-orange-50 rounded-2xl border border-orange-200 space-y-3">
+                        <div class="flex items-center space-x-2">
+                            <span class="font-bold text-orange-800 text-sm">🌍 Base URL ของระบบ (ใช้สำหรับ Redirect URI)</span>
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-semibold text-orange-700 mb-1">
+                                โดเมนปัจจุบันของระบบคุณ (ถ้าใช้ localhost กรุณาระบุ Port ด้วย เช่น http://localhost:8888)
+                            </label>
+                            <input type="text" name="oauth_base_url" value="<?= htmlspecialchars(getSystemSetting('oauth_base_url', 'http://localhost:8888')) ?>" required class="w-full px-3 py-2 text-xs bg-white border border-orange-300 rounded-xl focus:ring-2 focus:ring-orange-500 font-mono text-slate-800">
+                        </div>
+                    </div>
 
                     <!-- Google OAuth Config Box -->
                     <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-3">
