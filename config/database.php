@@ -6,9 +6,16 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-define('DB_NAME', 'db_sgr_qrcode');
-define('DB_USER', 'root');
-define('DB_PASS', 'root');
+// 📌 ถ้าระบบพบไฟล์ db_live.php ให้โหลดค่าจากไฟล์นั้น (สำหรับ Server จริง จะได้ไม่ถูก Git ทับ)
+if (file_exists(__DIR__ . '/db_live.php')) {
+    require_once __DIR__ . '/db_live.php';
+} else {
+    // 📌 ค่าเริ่มต้นสำหรับ MAMP (เครื่องนักพัฒนา)
+    if (!defined('DB_HOST')) define('DB_HOST', 'localhost');
+    if (!defined('DB_NAME')) define('DB_NAME', 'db_sgr_qrcode');
+    if (!defined('DB_USER')) define('DB_USER', 'root');
+    if (!defined('DB_PASS')) define('DB_PASS', 'root');
+}
 
 function getDBConnection() {
     static $pdo = null;
@@ -16,13 +23,15 @@ function getDBConnection() {
         return $pdo;
     }
 
+    $db_host = defined('DB_HOST') ? DB_HOST : 'localhost';
+    
     $configs = [
-        ['dsn' => 'mysql:unix_socket=/Applications/MAMP/tmp/mysql/mysql.sock', 'user' => 'root', 'pass' => 'root'],
-        ['dsn' => 'mysql:host=127.0.0.1;port=8889', 'user' => 'root', 'pass' => 'root'],
-        ['dsn' => 'mysql:host=localhost;port=8889', 'user' => 'root', 'pass' => 'root'],
-        ['dsn' => 'mysql:host=127.0.0.1;port=3306', 'user' => 'root', 'pass' => 'root'],
-        ['dsn' => 'mysql:host=127.0.0.1;port=3306', 'user' => 'root', 'pass' => ''],
-        ['dsn' => 'mysql:host=localhost;port=3306', 'user' => 'root', 'pass' => '']
+        // 1. ลองเชื่อมต่อผ่านโหมด Live Server แบบปกติ
+        ['dsn' => "mysql:host={$db_host};port=3306", 'user' => DB_USER, 'pass' => DB_PASS],
+        // 2. ลองเชื่อมต่อผ่าน MAMP Unix Socket
+        ['dsn' => 'mysql:unix_socket=/Applications/MAMP/tmp/mysql/mysql.sock', 'user' => DB_USER, 'pass' => DB_PASS],
+        // 3. ลองเชื่อมต่อผ่าน MAMP Port 8889
+        ['dsn' => "mysql:host={$db_host};port=8889", 'user' => DB_USER, 'pass' => DB_PASS]
     ];
 
     $connected = false;

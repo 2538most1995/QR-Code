@@ -2,3 +2,4 @@
 assets/uploads/*
 !assets/uploads/.gitkeep
 
+config/db_live.php
