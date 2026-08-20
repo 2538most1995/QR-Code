@@ -461,6 +461,23 @@ function submitCreateForm() {
 
             if (isEditMode) {
                 cancelEditMode();
+            } else {
+                // เคลียร์ฟอร์มเมื่อบันทึกใหม่สำเร็จ
+                const form = document.getElementById('qrForm');
+                if (form) form.reset();
+                
+                // คืนค่า Preview Card กลับเป็นค่าเริ่มต้น
+                const pvTitle = document.getElementById('preview_title');
+                const pvUrl = document.getElementById('preview_url');
+                if (pvTitle) pvTitle.textContent = 'ชื่อ QR-Code';
+                if (pvUrl) {
+                    pvUrl.textContent = 'https://www.google.com';
+                    pvUrl.href = 'https://www.google.com';
+                }
+                
+                // สร้าง QR ตัวอย่างใหม่
+                currentTargetUrl = 'https://www.google.com';
+                generateQRCode();
             }
         } else {
             showToast(res.message || 'เกิดข้อผิดพลาดในการบันทึก', 'error');

@@ -223,7 +223,7 @@ $recentList = $stmt->fetchAll();
                                     <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path></svg>
                                     </div>
-                                    <input type="text" id="title" name="title" value="แผนม.ต้น ภาคเรียนที่ 1 ปีการศึกษา 2569" placeholder="ระบุชื่อ QR Code เช่น แผนการสอน, แบบสอบถาม" required class="w-full pl-10 pr-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white focus:outline-none transition font-medium">
+                                    <input type="text" id="title" name="title" placeholder="ระบุชื่อ QR Code เช่น แผนการสอน, แบบสอบถาม" required class="w-full pl-10 pr-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white focus:outline-none transition font-medium">
                                 </div>
                             </div>
 
@@ -236,7 +236,7 @@ $recentList = $stmt->fetchAll();
                                     <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-blue-500">
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
                                     </div>
-                                    <input type="text" id="target_url" name="target_url" value="https://drive.google.com/file/d/sample" placeholder="https://drive.google.com/... หรือ https://..." required class="w-full pl-10 pr-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white focus:outline-none transition font-mono text-xs sm:text-sm">
+                                    <input type="text" id="target_url" name="target_url" placeholder="https://drive.google.com/... หรือ https://..." required class="w-full pl-10 pr-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white focus:outline-none transition font-mono text-xs sm:text-sm">
                                 </div>
                                 <p class="text-[11px] text-slate-400 mt-1">รองรับทุกลิงก์ เช่น เว็บไซต์, Google Drive, Google Form, Canva, โซเชียล ฯลฯ</p>
                             </div>
