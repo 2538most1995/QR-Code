@@ -1,0 +1,48 @@
+/* Custom Styles for SGR QR Code Generator */
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=Prompt:wght@400;500;600;700&display=swap');
+
+:root {
+    --primary-blue: #0284c7;
+    --sidebar-bg: #0052cc;
+}
+
+body {
+    font-family: 'Sarabun', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #f1f5f9;
+}
+
+h1, h2, h3, .font-heading {
+    font-family: 'Prompt', 'Sarabun', sans-serif;
+}
+
+/* Sidebar Custom Gradient */
+.sidebar-gradient {
+    background: linear-gradient(180deg, #0b57d0 0%, #0342a6 100%);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Print Media Query */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    body {
+        background: white !important;
+        padding: 0 !important;
+    }
+}

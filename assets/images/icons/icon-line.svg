@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="48" fill="#06c755"/>
+  <path d="M50 25 C33 25 20 35 20 48 C20 56 25 63 33 67 C34 68 35 70 34 73 C33 76 31 81 31 82 C30 83 32 83 33 83 C39 80 47 74 48 73 C49 73 49 73 50 73 C67 73 80 63 80 48 C80 35 67 25 50 25 Z" fill="#ffffff"/>
+  <text x="50" y="53" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#06c755" text-anchor="middle">LINE</text>
+</svg>
